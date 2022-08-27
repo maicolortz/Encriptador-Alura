@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Encriptador</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="style.css" />
+   
+  </head>
+  <body>
+    <script>
+      function encriptar() {
+        let mensaje = document.getElementById("t-envio").value;
+        let mens = "";
+        for (let i = 0; i < mensaje.length; i++) {
+          switch (mensaje.charAt(i)) {
+            case "a":
+              mens += "ai";
+              break;
+            case "e":
+              mens += "enter";
+              break;
+            case "i":
+              mens += "imes";
+              break;
+            case "o":
+              mens += "ober";
+              break;
+            case "u":
+              mens += "ufat";
+              break;
+            default:
+              mens += mensaje.charAt(i);
+              break;
+          }
+        }
+        document.getElementById("t-respuesta").value = mens;
+      }
+      function desencriptar() {
+        let mensaje = document.getElementById("t-envio").value;
+        let mens = "";
+        for (let i = 0; i < mensaje.length; i++) {
+          //if(mensaje.chartAt(i))
+          if (mensaje.slice(i,i+2)==='ai') {
+            mens+='a'
+            i++
+          }else if(mensaje.slice(i,i+4)==='imes'){
+            mens+='i'
+            i+=3
+          }else if(mensaje.slice(i,i+4)==='ober'){
+            mens+='o'
+            i+=3
+          }else if(mensaje.slice(i,i+4)==='ufat'){
+            mens+='u'
+            i+=3
+          }else if(mensaje.slice(i,i+5)==='enter'){
+            mens+='e'
+            i+=4
+          }else{
+            mens+=mensaje.charAt(i)
+          }
+        }
+        document.getElementById("t-respuesta").value = mens;
+      }
+    </script>
+    <header>
+      <h1>Encriptador Alura</h1>
+    </header>
+    <section class="caja">
+      <section class="caja-funcional">
+        <textarea rows="7" placeholder="Escribe aqui..."id="t-envio"></textarea>
+        <div class="caja-boton">
+          <button class="btn" onclick="encriptar()">Encriptar</button>
+          <button onclick="desencriptar()">Desencriptar</button>
+        </div>
+      </section>
+      <section class="caja-respuesta">
+        <textarea placeholder="Aqui tu respuesta" rows="7"id="t-respuesta" readonly></textarea>
+      </section>
+    </section>
+  </body>
+</html>
